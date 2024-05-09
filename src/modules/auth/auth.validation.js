@@ -1,10 +1,11 @@
 import joi from 'joi'
+import { generalFields } from '../../middleware/validation.middleware.js'
 
 export const signupSchema={
    body:joi.object({
     userName:joi.string().min(3).max(20).required(),
-    email: joi.string().email().required(),
-    password: joi.string().min(8).max(20).required(),
+    email: generalFields.email,
+    password: generalFields.password,
     cPassword: joi.valid(joi.ref('password')).required()
 }),
 query:joi.object({
@@ -14,7 +15,7 @@ query:joi.object({
 
 export const signinSchema=joi.object({
    
-    email: joi.string().email().required(),
-    password: joi.string().min(8).max(20).required(),
+    email: generalFields.email,
+    password: generalFields.password,
 
 })

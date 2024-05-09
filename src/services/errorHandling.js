@@ -7,3 +7,9 @@ export const asyncHandler=(func)=>{
     })
     }
 }
+
+export const globalErrorHandler=(err,req,res,next)=>{
+    if(err){
+        return res.json({message:err.message})
+    }
+}
